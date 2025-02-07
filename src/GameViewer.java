@@ -39,8 +39,8 @@ public class GameViewer extends JFrame {
 
         //g.drawImage(welcome, 0, TOOLBAR_HEIGHT, this);
         // TODO: FINISH
-        if (game.getPlayer() == null) {
-            g.drawImage(welcome, 0, 0, this);
-        }
+        //if (game.getPlayer() == null) {
+            g.drawImage(welcome, 0, TOOLBAR_HEIGHT, this);
+       // }
     }
 }
