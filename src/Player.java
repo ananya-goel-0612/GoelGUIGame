@@ -4,23 +4,10 @@ public class Player
     private String playerName;
     private double score;
 
-    // Constructors
-    public Player(String name, int turns)
-    {
-        this.playerName = name;
-        this.score = 0;
-    }
-
-
+    // Constructor
     public Player(String name)
     {
         this.playerName = name;
-        this.score = 0;
-    }
-
-    public Player()
-    {
-        this.playerName = "Guest";
         this.score = 0;
     }
 
@@ -34,6 +21,4 @@ public class Player
     {
         score += 1;
     }
-
-
 }

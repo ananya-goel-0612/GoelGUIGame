@@ -12,7 +12,7 @@ public class Game
         System.out.println("The game is pretty simple. When you roll the dice," +
                 "you have to guess the number it rolls.");
         System.out.println("If you're correct, you'll get a point!");
-        System.out.println("Whoever has the highest score wins! Everyone gets 5" +
+        System.out.println("Whoever has the highest score wins! Everyone gets 5 " +
                 "rounds. Let's begin!");
     }
 
@@ -29,7 +29,7 @@ public class Game
             System.out.println("What do you think it rolled? ");
             int guess = check.nextInt();
             // tells the user if they're right or wrong
-            if (d1.checkGuess(guess, roll) == false)
+            if (!d1.checkGuess(guess, roll))
             {
                 System.out.println("Whoops, that's not correct. The correct " +
                         "answer was " + roll);
@@ -52,7 +52,7 @@ public class Game
         System.out.println("What is your name? ");
         String name = player.nextLine();
 
-        // initalizes the new player
+        // Initalizes the new player
         p1 = new Player(name);
     }
 
