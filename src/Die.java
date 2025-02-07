@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Die
 {
     /** Instance Variables **/
@@ -15,7 +17,6 @@ public class Die
      * the number of sides on the Die
      */
     public int roll() {
-        // TODO: complete roll()
         int roll = (int)(Math.random() * numSides + 1);
         return roll;
     }
@@ -25,7 +26,6 @@ public class Die
      * "This is a n-sided die."
      */
     public String toString() {
-        // TODO: complete toString()
         return ("This is a " + numSides + "-sided die.");
     }
 
@@ -36,5 +36,9 @@ public class Die
         }
         return false;
     }
+
+//    public void draw(Graphics g) {
+//        // TODO
+//    }
 
 }
