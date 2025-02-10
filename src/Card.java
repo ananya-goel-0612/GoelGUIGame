@@ -1,3 +1,6 @@
+import javax.swing.*;
+import java.awt.*;
+
 public class Card {
 
     // Rank = type (number, skip, draw)
@@ -6,11 +9,14 @@ public class Card {
     private String color;
     // Value = index of card
     private int index;
+    private Image image;
 
     public Card(String type, String color, int index) {
         this.type = type;
         this.color = color;
         this.index = index;
+        // TODO: LOAD ALL IMAGES
+        image = new ImageIcon("Resources/______").getImage();
     }
 
 
