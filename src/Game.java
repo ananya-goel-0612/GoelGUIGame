@@ -138,8 +138,8 @@ public class Game {
     // Checks if the numbers or colors of the top card and played card match
     // Returns true or false
     public boolean isValidMove(Card playedCard, Card topCard) {
-        return playedCard.getRank().equals(topCard.getRank()) ||
-                playedCard.getSuit().equals(topCard.getSuit());
+        return playedCard.getType().equals(topCard.getType()) ||
+                playedCard.getColor().equals(topCard.getColor());
     }
 
     // Removes a card from the player's hand once they've played it

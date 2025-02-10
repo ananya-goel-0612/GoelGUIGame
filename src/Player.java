@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Player {
@@ -10,7 +11,6 @@ public class Player {
         this.hand = new ArrayList<>();
         this.points = 0;
     }
-
 
     public Player(String name, ArrayList<Card> hand) {
         this.name = name;
@@ -42,5 +42,10 @@ public class Player {
     // Don't need a to string for the player class
     public String toString() {
         return name + " has " + points + " points\n" + name + "'s cards: " + hand;
+    }
+
+    // TODO: Draw each player's hand
+    public void draw(Graphics g) {
+
     }
 }

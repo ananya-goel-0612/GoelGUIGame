@@ -1,46 +1,46 @@
 public class Card {
 
     // Rank = type (number, skip, draw)
-    private String rank;
+    private String type;
     // Suit = color
-    private String suit;
+    private String color;
     // Value = index of card
-    private int value;
+    private int index;
 
-    public Card(String rank, String suit, int value) {
-        this.rank = rank;
-        this.suit = suit;
-        this.value = value;
+    public Card(String type, String color, int index) {
+        this.type = type;
+        this.color = color;
+        this.index = index;
     }
 
 
-    public String getRank() {
-        return rank;
+    public String getType() {
+        return type;
     }
 
-    public void setRank(String rank) {
-        this.rank = rank;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getSuit() {
-        return suit;
+    public String getColor() {
+        return color;
     }
 
-    public void setSuit(String suit) {
-        this.suit = suit;
+    public void setColor(String color) {
+        this.color = color;
     }
 
-    public int getValue() {
-        return value;
+    public int getIndex() {
+        return index;
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public void setIndex(int index) {
+        this.index = index;
     }
 
     // This is where each of the cards gets printed out so that the
     // User can choose what card to play
     public String toString() {
-        return rank + " of " + suit;
+        return color + " " + type;
     }
 }
