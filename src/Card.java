@@ -16,7 +16,7 @@ public class Card {
         this.color = color;
         this.index = index;
         // TODO: LOAD ALL IMAGES
-        image = new ImageIcon("Resources/______").getImage();
+        image = new ImageIcon("Resources/" + color + type).getImage();
     }
 
 
@@ -42,6 +42,14 @@ public class Card {
 
     public void setIndex(int index) {
         this.index = index;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 
     // This is where each of the cards gets printed out so that the
