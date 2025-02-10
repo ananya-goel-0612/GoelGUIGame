@@ -1,34 +1,46 @@
-public class Player
-{
-    // Instance variables
-    private String playerName;
-    private int turns;
-    private double score;
+import java.util.ArrayList;
 
-    // Constructor
-    public Player(String name)
-    {
-        this.playerName = name;
-        this.score = 0;
-        this.turns = 0;
+public class Player {
+    private String name;
+    private ArrayList<Card> hand;
+    private int points;
+
+    public Player(String name) {
+        this.name = name;
+        this.hand = new ArrayList<>();
+        this.points = 0;
     }
 
-    public int getTurns() {
-        return turns;
+
+    public Player(String name, ArrayList<Card> hand) {
+        this.name = name;
+        this.hand = hand;
+        this.points = 0;
     }
 
-    // Methods
-    public String toString()
-    {
-        return (playerName + "'s score is " + score + "!");
+    public String getName() {
+        return name;
     }
 
-    public void updateScore()
-    {
-        this.score += 1;
+    public ArrayList<Card> getHand() {
+        return hand;
     }
 
-    public void updateTurns() {
-        this.turns += 1;
+    // Don't need points in this game
+    public int getPoints() {
+        return points;
+    }
+
+    public void addPoints(int points) {
+        this.points += points;
+    }
+
+    public void addCard(Card card) {
+        hand.add(card);
+    }
+
+    // Don't need a to string for the player class
+    public String toString() {
+        return name + " has " + points + " points\n" + name + "'s cards: " + hand;
     }
 }

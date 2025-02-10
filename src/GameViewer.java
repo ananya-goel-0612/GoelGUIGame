@@ -8,24 +8,11 @@ public class GameViewer extends JFrame {
     private final Game game;
 
     private Image[] diceImages;
-    private Image closedBox;
-    private Image openBox;
-    private Image welcome;
 
     public GameViewer(Game game) {
         this.game = game;
 
         diceImages = new Image[6];
-        diceImages[0] = new ImageIcon("Resources/1.png").getImage();
-        diceImages[1] = new ImageIcon("Resources/2.png").getImage();
-        diceImages[2] = new ImageIcon("Resources/3.png").getImage();
-        diceImages[3] = new ImageIcon("Resources/4.png").getImage();
-        diceImages[4] = new ImageIcon("Resources/5.png").getImage();
-        diceImages[5] = new ImageIcon("Resources/6.png").getImage();
-
-        closedBox = new ImageIcon("Resources/box.png").getImage();
-        openBox = new ImageIcon("Resources/openBox.png").getImage();
-        welcome = new ImageIcon("Resources/welcome.png").getImage();
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("Guess The Number!");
