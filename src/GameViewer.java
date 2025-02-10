@@ -7,12 +7,14 @@ public class GameViewer extends JFrame {
     private static final int TOOLBAR_HEIGHT = 23;
     private final Game game;
 
-    private Image[] diceImages;
+    private Image[] cardImages;
+    private Image welcome;
 
     public GameViewer(Game game) {
         this.game = game;
 
-        diceImages = new Image[6];
+        cardImages = new Image[6];
+        welcome = new ImageIcon("Resources/welcome.png").getImage();
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("Guess The Number!");

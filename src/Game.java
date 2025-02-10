@@ -43,19 +43,12 @@ public class Game {
         Card topCard = deck.deal();
         System.out.println("Starting card: " + topCard);
         int currentPlayerIndex = 0;
-        boolean skipNextTurn = false;
 
         // Basically the game loop runs until a player's hand is empty
         // Or if all the cards have been used
         // Which is when there will be a return statement
         while (true) {
             Player currentPlayer = players.get(currentPlayerIndex);
-            if (skipNextTurn) {
-                System.out.println(currentPlayer.getName() + " is skipped!");
-                skipNextTurn = false;
-                currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
-                continue;
-            }
 
             // Print out whose turn it is
             System.out.println(currentPlayer.getName() + "'s turn.");
@@ -99,34 +92,6 @@ public class Game {
                         topCard = playedCard;
                         // Tell the user what card they played
                         System.out.println("You played: " + playedCard);
-
-                        // Handle special cards
-                        // If the skip card is played, set the boolean equal to true
-                        if (playedCard.getRank().equals("Skip")) {
-                            skipNextTurn = true;
-                        }
-                        // If they played their draw two card
-                        else if (playedCard.getRank().equals("Draw Two")) {
-                            // Find the index of the next player
-                            int nextPlayerIndex = (currentPlayerIndex + 1) % players.size();
-                            // Create the next player
-                            Player nextPlayer = players.get(nextPlayerIndex);
-                            // Add two cards to the next player's hand
-                            for (int i = 0; i < 2; i++) {
-                                Card drawnCard = deck.deal();
-                                if (drawnCard != null) {
-                                    nextPlayer.addCard(drawnCard);
-                                }
-                                else {
-                                    System.out.println("Deck is empty. Unable to draw more cards.");
-                                    break;
-                                }
-                            }
-                            // Print a message saying who drew two cards
-                            System.out.println(nextPlayer.getName() + " drew two cards!");
-                            // Skip that player's turn
-                            currentPlayerIndex = nextPlayerIndex;
-                        }
                     }
                     // If it reaches here, the move was invalid
                     else {
