@@ -22,7 +22,7 @@ public class Game {
             }
         }
 
-        this.window = new GameViewer(this);
+        //this.window = new GameViewer(this);
     }
 
     // Prints out the game instructions when the game is started
@@ -154,9 +154,9 @@ public class Game {
     // Main function
     public static void main(String[] args) {
         // All the card values for uno
-        String[] ranks = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "Skip", "Draw Two"};
+        String[] ranks = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         String[] suits = {"Red", "Green", "Blue", "Yellow"};
-        int[] values = {1, 2, 3, 4, 5, 6, 7, 8, 9, 20, 20};
+        int[] values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
         String[] playerNames = {"User 1", "User 2"};
         Game unoGame = new Game(playerNames, ranks, suits, values);
