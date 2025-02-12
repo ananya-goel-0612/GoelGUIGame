@@ -4,10 +4,16 @@ import java.util.Scanner;
 public class Game {
     private Deck deck;
     private ArrayList<Player> players;
+    private int state;
+
+    public static final int START = 0;
+    public static final int PLAYING = 1;
+    public static final int WON = 2;
 
     private GameViewer window;
 
     public Game(String[] playerNames, String[] types, String[] colors, int[] indices) {
+        this.state = START;
         // Initialize deck
         deck = new Deck(types, colors, indices);
         // Get the players
@@ -21,8 +27,7 @@ public class Game {
                 player.addCard(deck.deal());
             }
         }
-
-        //this.window = new GameViewer(this);
+        this.window = new GameViewer(this);
     }
 
     // Prints out the game instructions when the game is started
@@ -34,6 +39,7 @@ public class Game {
     }
 
     public void playGame() {
+        this.state = PLAYING;
         printInstructions();
         // Create scanner to get user input for their choice
         // Of cards
@@ -102,6 +108,7 @@ public class Game {
             // Check for win condition
             // If someone's hand is empty, then they won
             if (currentPlayer.getHand().isEmpty()) {
+                this.state = WON;
                 System.out.println(currentPlayer.getName() + " wins!");
                 scanner.close();
                 return;
@@ -160,5 +167,13 @@ public class Game {
         String[] playerNames = {"User 1", "User 2"};
         Game unoGame = new Game(playerNames, types, colors, indices);
         unoGame.playGame();
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 }
