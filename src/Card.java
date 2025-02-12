@@ -3,11 +3,11 @@ import java.awt.*;
 
 public class Card {
 
-    // Type (which number it is)
+    // Rank = type (number, skip, draw)
     private String type;
-    // Color
+    // Suit = color
     private String color;
-    // Index of card
+    // Value = index of card
     private int index;
     private Image image;
 

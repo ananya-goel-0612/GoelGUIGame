@@ -7,11 +7,11 @@ public class Game {
 
     private GameViewer window;
 
-    public Game(String[] playerNames, String[] ranks, String[] suits, int[] values) {
+    public Game(String[] playerNames, String[] types, String[] colors, int[] indices) {
         // Initialize deck
-        deck = new Deck(ranks, suits, values);
+        deck = new Deck(types, colors, indices);
         // Get the players
-        players = new ArrayList<>();
+        players = new ArrayList<Player>();
         for (String name : playerNames) {
             players.add(new Player(name));
         }
@@ -153,12 +153,12 @@ public class Game {
     // Main function
     public static void main(String[] args) {
         // All the card values for uno
-        String[] ranks = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
-        String[] suits = {"Red", "Green", "Blue", "Yellow"};
-        int[] values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        String[] types = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        String[] colors = {"Red", "Green", "Blue", "Yellow"};
+        int[] indices = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
         String[] playerNames = {"User 1", "User 2"};
-        Game unoGame = new Game(playerNames, ranks, suits, values);
+        Game unoGame = new Game(playerNames, types, colors, indices);
         unoGame.playGame();
     }
 }
