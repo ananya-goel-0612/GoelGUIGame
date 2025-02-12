@@ -26,7 +26,6 @@ public class GameViewer extends JFrame {
         g.setColor(Color.white);
         g.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-        // TODO: FINISH
         int state = game.getState();
 
         switch (state) {
