@@ -30,7 +30,6 @@ public class Game {
         System.out.println("Welcome to UNO!");
         System.out.println("This is a two-player game, with a User 1 and a User 2");
         System.out.println("Players take turns matching the top card's color or number.");
-        System.out.println("Special cards like Skip and Draw Two will alter gameplay.");
         System.out.println("First to discard all cards wins!");
     }
 
