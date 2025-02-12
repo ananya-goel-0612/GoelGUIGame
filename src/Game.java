@@ -103,11 +103,9 @@ public class Game {
                     Card playedCard = currentPlayer.getHand().get(index);
                     if (isValidMove(playedCard, topCard)) {
                         // Remove the played card from their hand
-                        currentPlayer.getHand().remove(index);
                         // Set the top card equal to the played card
-                        topCard = playedCard;
+                        topCard = playCard(currentPlayer, index);
                         // Tell the user what card they played
-                        System.out.println("You played: " + playedCard);
                     }
                     // If it reaches here, the move was invalid
                     else {
