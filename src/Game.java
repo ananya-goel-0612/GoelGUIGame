@@ -166,6 +166,14 @@ public class Game {
         return playedCard;
     }
 
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
     // Main function
     public static void main(String[] args) {
         // All the card values for uno
@@ -176,13 +184,5 @@ public class Game {
         String[] playerNames = {"User 1", "User 2"};
         Game unoGame = new Game(playerNames, types, colors, indices);
         unoGame.playGame();
-    }
-
-    public int getState() {
-        return state;
-    }
-
-    public void setState(int state) {
-        this.state = state;
     }
 }
