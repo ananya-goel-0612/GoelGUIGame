@@ -36,14 +36,23 @@ public class Game {
         System.out.println("This is a two-player game, with a User 1 and a User 2");
         System.out.println("Players take turns matching the top card's color or number.");
         System.out.println("First to discard all cards wins!");
+        System.out.println("Are you ready to begin? (answer y or n)");
     }
 
     public void playGame() {
-        this.state = PLAYING;
         printInstructions();
         // Create scanner to get user input for their choice
         // Of cards
         Scanner scanner = new Scanner(System.in);
+        String answer = scanner.nextLine();
+
+        if (!answer.equalsIgnoreCase("y")) {
+            return;
+        }
+
+        this.state = PLAYING;
+        window.repaint();
+
         // Get the starting top card for the deck
         Card topCard = deck.deal();
         System.out.println("Starting card: " + topCard);
