@@ -29,23 +29,17 @@ public class GameViewer extends JFrame {
         // TODO: FINISH
         int state = game.getState();
 
-//        switch (state) {
-//            case Game.START:
-//                g.drawImage(welcome, 0, TOOLBAR_HEIGHT, this);
-//            case Game.WON:
-//                // TODO
-//            case Game.PLAYING:
-//                // TODO
-//                g.setColor(Color.black);
-//                g.fillRect(0,0, WINDOW_WIDTH, WINDOW_HEIGHT);
-//        }
-
-        if (state == 0) {
-            g.drawImage(welcome, 0, TOOLBAR_HEIGHT, this);
-        }
-        else if (state == 1) {
-            g.setColor(Color.black);
-            g.fillRect(0,0, WINDOW_WIDTH, WINDOW_HEIGHT);
+        switch (state) {
+            case Game.START:
+                g.drawImage(welcome, 0, TOOLBAR_HEIGHT, this);
+                break;
+            case Game.WON:
+                // TODO
+            case Game.PLAYING:
+                // TODO
+                g.setColor(Color.black);
+                g.fillRect(0,0, WINDOW_WIDTH, WINDOW_HEIGHT);
+                break;
         }
     }
 }
