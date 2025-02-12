@@ -10,6 +10,8 @@ public class Game {
     public static final int PLAYING = 1;
     public static final int WON = 2;
 
+    private final int NUM_CARDS = 5;
+
     private GameViewer window;
 
     public Game(String[] playerNames, String[] types, String[] colors, int[] indices) {
@@ -21,9 +23,9 @@ public class Game {
         for (String name : playerNames) {
             players.add(new Player(name));
         }
-        // Deal initial cards (7 cards per player for uno)
+        // Deal initial cards (NUM_CARDS cards per player for uno)
         for (Player player : players) {
-            for (int i = 0; i < 7; i++) {
+            for (int i = 0; i < NUM_CARDS; i++) {
                 player.addCard(deck.deal());
             }
         }
