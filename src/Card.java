@@ -10,11 +10,15 @@ public class Card {
     // Value = index of card
     private int index;
     private Image image;
+    private GameViewer window;
+    public static final int CARD_WIDTH = 100;
+    public static final int CARD_HEIGHT = (int)(100*1.7106038292);
 
-    public Card(String type, String color, int index) {
+    public Card(String type, String color, int index, GameViewer window) {
         this.type = type;
         this.color = color;
         this.index = index;
+        this.window = window;
         // TODO: LOAD ALL IMAGES
         image = new ImageIcon("Resources/Cards/" + color + type).getImage();
     }

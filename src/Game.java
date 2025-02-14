@@ -16,8 +16,10 @@ public class Game {
 
     public Game(String[] playerNames, String[] types, String[] colors, int[] indices) {
         this.state = START;
+        this.window = new GameViewer(this);
+
         // Initialize deck
-        deck = new Deck(types, colors, indices);
+        deck = new Deck(types, colors, indices, window);
         // Get the players
         players = new ArrayList<Player>();
         for (String name : playerNames) {
@@ -29,7 +31,6 @@ public class Game {
                 player.addCard(deck.deal());
             }
         }
-        this.window = new GameViewer(this);
     }
 
     // Prints out the game instructions when the game is started
