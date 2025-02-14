@@ -16,7 +16,7 @@ public class Card {
         this.color = color;
         this.index = index;
         // TODO: LOAD ALL IMAGES
-        image = new ImageIcon("Resources/" + color + type).getImage();
+        image = new ImageIcon("Resources/Cards/" + color + type).getImage();
     }
 
 
