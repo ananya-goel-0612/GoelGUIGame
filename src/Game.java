@@ -6,6 +6,8 @@ public class Game {
     private ArrayList<Player> players;
     private int state;
 
+    private String winner;
+
     public static final int START = 0;
     public static final int PLAYING = 1;
     public static final int WON = 2;
@@ -119,6 +121,7 @@ public class Game {
             // If someone's hand is empty, then they won
             if (currentPlayer.getHand().isEmpty()) {
                 this.state = WON;
+                winner = currentPlayer.getName();
                 System.out.println(currentPlayer.getName() + " wins!");
                 scanner.close();
                 return;
@@ -173,6 +176,10 @@ public class Game {
 
     public void setState(int state) {
         this.state = state;
+    }
+
+    public String getWinner() {
+        return winner;
     }
 
     // Main function
