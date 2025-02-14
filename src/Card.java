@@ -61,4 +61,8 @@ public class Card {
     public String toString() {
         return color + " " + type;
     }
+
+    public void draw(Graphics g, int xTop, int yTop) {
+        g.drawImage(image, xTop,yTop, CARD_WIDTH,CARD_HEIGHT, window);
+    }
 }
