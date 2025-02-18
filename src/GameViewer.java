@@ -21,7 +21,7 @@ public class GameViewer extends JFrame {
         tie = new ImageIcon("Resources/tie.png").getImage();
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setTitle("Guess The Number!");
+        this.setTitle("Ananya's Simplified Uno!");
         this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         this.setVisible(true);
     }
