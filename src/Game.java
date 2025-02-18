@@ -179,9 +179,9 @@ public class Game {
         if (isValidMove(playedCard, topCard)) {
             // Remove the played card from their hand
             // Set the top card equal to the played card
-            topCard = playedCard;
+            topCard = currentPlayer.getHand().remove(index);
             // Tell the user what card they played
-            System.out.println("You played: " + playedCard);
+            System.out.println("You played: " + topCard);
         }
         // If it reaches here, the move was invalid
         else {
