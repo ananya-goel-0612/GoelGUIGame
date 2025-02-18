@@ -77,10 +77,7 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         String answer = scanner.nextLine();
 
-        if (!answer.equalsIgnoreCase("y")) {
-            return false;
-        }
-        return true;
+        return answer.equalsIgnoreCase("y");
     }
 
     public void initializeGame() {
