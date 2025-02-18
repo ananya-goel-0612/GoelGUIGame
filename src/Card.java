@@ -12,7 +12,7 @@ public class Card {
     private Image image;
     private GameViewer window;
     public static final int CARD_WIDTH = 100;
-    public static final int CARD_HEIGHT = (int)(100*1.7106038292);
+    public static final int CARD_HEIGHT = 171;
 
     public Card(String type, String color, int index, GameViewer window) {
         this.type = type;

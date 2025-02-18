@@ -37,7 +37,6 @@ public class GameViewer extends JFrame {
                 g.drawImage(welcome, 0, 0, this);
                 break;
             case Game.WON:
-                // TODO
                 if (game.getWinner().equals("User 1")) {
                     g.drawImage(user1won, 0, 0, this);
                 }
@@ -47,6 +46,7 @@ public class GameViewer extends JFrame {
                 else {
                     g.drawImage(tie, 0, 0, this);
                 }
+                break;
             case Game.PLAYING:
                 // TODO
                 g.setColor(Color.black);
