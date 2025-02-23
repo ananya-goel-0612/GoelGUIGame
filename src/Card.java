@@ -20,7 +20,7 @@ public class Card {
         this.index = index;
         this.window = window;
         // TODO: LOAD ALL IMAGES
-        image = new ImageIcon("Resources/Cards/" + color + type).getImage();
+        image = new ImageIcon("Resources/Cards/" + color + type + ".png").getImage();
     }
 
 
@@ -63,6 +63,6 @@ public class Card {
     }
 
     public void draw(Graphics g, int xTop, int yTop) {
-        g.drawImage(image, xTop,yTop, CARD_WIDTH,CARD_HEIGHT, window);
+        g.drawImage(this.image, xTop,yTop, CARD_WIDTH,CARD_HEIGHT, window);
     }
 }

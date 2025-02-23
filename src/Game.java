@@ -16,6 +16,8 @@ public class Game {
 
     private GameViewer window;
 
+    private Card topCard;
+
     public Game(String[] playerNames, String[] types, String[] colors, int[] indices) {
         this.state = START;
         this.window = new GameViewer(this);
@@ -85,11 +87,9 @@ public class Game {
             return;
         }
 
-        Scanner scanner = new Scanner(System.in);
-        this.state = PLAYING;
-
         // Get the starting top card for the deck
-        Card topCard = deck.deal();
+        topCard = deck.deal();
+        this.state = PLAYING;
         System.out.println("Starting card: " + topCard);
 
         runGame(topCard);
@@ -97,32 +97,36 @@ public class Game {
 
     public void runGame(Card topCard) {
         Scanner scanner = new Scanner(System.in);
+        window.repaint();
 
         while (true) {
-            window.repaint();
-
             Player user = players.get(0);
             printGameInstructions(user, topCard);
 
             topCard = userTurn(user, topCard);
+            window.repaint();
 
             Player computer = players.get(1);
             topCard = computerTurn(computer, topCard);
+            window.repaint();
 
             // If someone's hand is empty, then they won
             if (user.getHand().isEmpty()) {
                 isWon(user);
                 scanner.close();
+                window.repaint();
                 return;
             }
             else if (computer.getHand().isEmpty()) {
                 isWon(computer);
                 scanner.close();
+                window.repaint();
                 return;
             }
             else if (deck.isEmpty()) {
                 isWon("TIE");
                 scanner.close();
+                window.repaint();
                 return;
             }
         }
@@ -210,7 +214,7 @@ public class Game {
         Card playedCard = currentPlayer.getHand().get(index);
         if (isValidMove(playedCard, topCard)) {
             topCard = currentPlayer.getHand().remove(index);
-            System.out.println("You played: " + topCard);
+            System.out.println(currentPlayer.getName() + " played: " + topCard);
         }
         else {
             System.out.println("Invalid move. Skipping turn.");
@@ -228,6 +232,18 @@ public class Game {
 
     public String getWinner() {
         return winner;
+    }
+
+    public ArrayList<Card> getUserHand() {
+        return players.get(0).getHand();
+    }
+
+    public ArrayList<Card> getCompHand() {
+        return players.get(1).getHand();
+    }
+
+    public Card getTopCard() {
+        return topCard;
     }
 
     // Main function
