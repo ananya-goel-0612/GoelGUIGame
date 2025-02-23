@@ -40,7 +40,7 @@ public class Game {
     // Prints out the game instructions when the game is started
     public void printStartingInstructions() {
         System.out.println("Welcome to UNO!");
-        System.out.println("This is a two-player game, with a User 1 and a User 2");
+        System.out.println("This is a two-player game, with a User and a Computer.");
         System.out.println("Players take turns matching the top card's color or number.");
         System.out.println("First to discard all cards wins!");
         System.out.println("Are you ready to begin? (answer y or n)");
@@ -104,6 +104,13 @@ public class Game {
         while (true) {
             printGameInstructions(user);
 
+            if (deck.isEmpty()) {
+                isWon("TIE");
+                scanner.close();
+                window.repaint();
+                return;
+            }
+
             topCard = userTurn(user);
             checkUno(user);
             window.repaint();
@@ -121,12 +128,6 @@ public class Game {
             }
             else if (computer.getHand().isEmpty()) {
                 isWon(computer);
-                scanner.close();
-                window.repaint();
-                return;
-            }
-            else if (deck.isEmpty()) {
-                isWon("TIE");
                 scanner.close();
                 window.repaint();
                 return;
