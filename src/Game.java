@@ -74,8 +74,7 @@ public class Game {
 
     public boolean startGame() {
         printStartingInstructions();
-        // Create scanner to get user input for their choice
-        // Of cards
+        // Create scanner to get user input for their choice of cards
         Scanner scanner = new Scanner(System.in);
         String answer = scanner.nextLine();
 
@@ -147,7 +146,6 @@ public class Game {
 
     public Card userTurn(Player user) {
         Scanner scanner = new Scanner(System.in);
-
         String input = scanner.nextLine();
 
         // If they choose to draw a card, draw a card and add it to their hand
@@ -201,14 +199,12 @@ public class Game {
     }
 
     // Checks if the numbers or colors of the top card and played card match
-    // Returns true or false
     public boolean isValidMove(Card playedCard) {
         return playedCard.getType().equals(topCard.getType()) ||
                 playedCard.getColor().equals(topCard.getColor());
     }
 
     // Removes a card from the player's hand once they've played it
-    // Prints out which card they played
     // Returns the card that they played
     public Card playCard(Player currentPlayer, int index) {
         Card playedCard = currentPlayer.getHand().get(index);
