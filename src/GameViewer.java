@@ -12,7 +12,7 @@ public class GameViewer extends JFrame {
     private final Game game;
 
     private Image welcome;
-    private Image user1won;
+    private Image userWon;
     private Image computerWon;
     private Image tie;
     private Image cardBack;
@@ -21,7 +21,7 @@ public class GameViewer extends JFrame {
         this.game = game;
 
         welcome = new ImageIcon("Resources/welcome.png").getImage();
-        user1won = new ImageIcon("Resources/user1won.png").getImage();
+        userWon = new ImageIcon("Resources/userWon.png").getImage();
         computerWon = new ImageIcon("Resources/computerWon.png").getImage();
         tie = new ImageIcon("Resources/tie.png").getImage();
         cardBack = new ImageIcon("Resources/back.png").getImage();
@@ -44,7 +44,7 @@ public class GameViewer extends JFrame {
                 break;
             case Game.WON:
                 if (game.getWinner().equals("User")) {
-                    g.drawImage(user1won, 0, 0, this);
+                    g.drawImage(userWon, 0, 0, this);
                 }
                 else if (game.getWinner().equals("Computer")) {
                     g.drawImage(computerWon, 0, 0, this);
