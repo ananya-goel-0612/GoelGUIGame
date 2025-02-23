@@ -24,7 +24,6 @@ public class GameViewer extends JFrame {
         user1won = new ImageIcon("Resources/user1won.png").getImage();
         user2won = new ImageIcon("Resources/user2won.png").getImage();
         tie = new ImageIcon("Resources/tie.png").getImage();
-        // TODO
         cardBack = new ImageIcon("Resources/back.png").getImage();
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -55,7 +54,6 @@ public class GameViewer extends JFrame {
                 }
                 break;
             case Game.PLAYING:
-                // TODO
                 int yPosition = WINDOW_HEIGHT / 2 - Card.CARD_HEIGHT / 2;
                 int xPosition = WINDOW_WIDTH / 2 - 2 * Card.CARD_WIDTH;
                 g.drawImage(cardBack, xPosition, yPosition, Card.CARD_WIDTH, Card.CARD_HEIGHT, this);

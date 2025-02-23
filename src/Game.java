@@ -46,7 +46,7 @@ public class Game {
         System.out.println("Are you ready to begin? (answer y or n)");
     }
 
-    public void printGameInstructions(Player currentPlayer, Card topCard) {
+    public void printGameInstructions(Player currentPlayer) {
         // Print out whose turn it is
         System.out.println(currentPlayer.getName() + "'s turn.");
         // Print out the current player's hand
@@ -92,18 +92,18 @@ public class Game {
         this.state = PLAYING;
         System.out.println("Starting card: " + topCard);
 
-        runGame(topCard);
+        runGame();
     }
 
-    public void runGame(Card topCard) {
+    public void runGame() {
         Scanner scanner = new Scanner(System.in);
         window.repaint();
 
         while (true) {
             Player user = players.get(0);
-            printGameInstructions(user, topCard);
+            printGameInstructions(user);
 
-            topCard = userTurn(user, topCard);
+            topCard = userTurn(user);
             window.repaint();
 
             Player computer = players.get(1);
@@ -132,7 +132,7 @@ public class Game {
         }
     }
 
-    public Card computerTurn(Player computer, Card topCard) {
+    public Card computerTurn(Player computer) {
         ArrayList<Card> hand = computer.getHand();
         for (int i = 0, n = hand.size(); i < n; i++) {
             if (isValidMove(hand.get(i), topCard)) {
@@ -145,7 +145,7 @@ public class Game {
         return topCard;
     }
 
-    public Card userTurn(Player user, Card topCard) {
+    public Card userTurn(Player user) {
         Scanner scanner = new Scanner(System.in);
 
         String input = scanner.nextLine();
@@ -202,7 +202,7 @@ public class Game {
 
     // Checks if the numbers or colors of the top card and played card match
     // Returns true or false
-    public boolean isValidMove(Card playedCard, Card topCard) {
+    public boolean isValidMove(Card playedCard) {
         return playedCard.getType().equals(topCard.getType()) ||
                 playedCard.getColor().equals(topCard.getColor());
     }
@@ -210,9 +210,9 @@ public class Game {
     // Removes a card from the player's hand once they've played it
     // Prints out which card they played
     // Returns the card that they played
-    public Card playCard(Player currentPlayer, int index, Card topCard) {
+    public Card playCard(Player currentPlayer, int index) {
         Card playedCard = currentPlayer.getHand().get(index);
-        if (isValidMove(playedCard, topCard)) {
+        if (isValidMove(playedCard)) {
             topCard = currentPlayer.getHand().remove(index);
             System.out.println(currentPlayer.getName() + " played: " + topCard);
         }
