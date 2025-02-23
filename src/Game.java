@@ -107,7 +107,7 @@ public class Game {
             window.repaint();
 
             Player computer = players.get(1);
-            topCard = computerTurn(computer, topCard);
+            topCard = computerTurn(computer);
             window.repaint();
 
             // If someone's hand is empty, then they won
@@ -135,8 +135,8 @@ public class Game {
     public Card computerTurn(Player computer) {
         ArrayList<Card> hand = computer.getHand();
         for (int i = 0, n = hand.size(); i < n; i++) {
-            if (isValidMove(hand.get(i), topCard)) {
-                topCard = playCard(computer, i, topCard);
+            if (isValidMove(hand.get(i))) {
+                topCard = playCard(computer, i);
                 return topCard;
             }
         }
@@ -162,7 +162,7 @@ public class Game {
                 System.out.println("Invalid input. Skipping turn.");
             }
             else {
-                topCard = playCard(user, index, topCard);
+                topCard = playCard(user, index);
             }
         }
         return topCard;
