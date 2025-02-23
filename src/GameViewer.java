@@ -37,10 +37,10 @@ public class GameViewer extends JFrame {
                 g.drawImage(welcome, 0, 0, this);
                 break;
             case Game.WON:
-                if (game.getWinner().equals("User 1")) {
+                if (game.getWinner().equals("User")) {
                     g.drawImage(user1won, 0, 0, this);
                 }
-                else if (game.getWinner().equals("User 2")) {
+                else if (game.getWinner().equals("Computer")) {
                     g.drawImage(user2won, 0, 0, this);
                 }
                 else {

@@ -44,11 +44,11 @@ public class Game {
         System.out.println("Are you ready to begin? (answer y or n)");
     }
 
-    public void printGameInstructions(Player currentPlayer, int currentPlayerIndex, Card topCard) {
+    public void printGameInstructions(Player currentPlayer, Card topCard) {
         // Print out whose turn it is
         System.out.println(currentPlayer.getName() + "'s turn.");
         // Print out the current player's hand
-        System.out.println("Your hand: " + currentPlayer.getHand());
+        System.out.println("Hand: " + currentPlayer.getHand());
         // Print out the top card
         System.out.println("Top card: " + topCard);
         // Have them draw a card or play a card
@@ -91,53 +91,88 @@ public class Game {
         // Get the starting top card for the deck
         Card topCard = deck.deal();
         System.out.println("Starting card: " + topCard);
-        int currentPlayerIndex = 0;
 
-        runGame(topCard, currentPlayerIndex);
+        runGame(topCard);
     }
 
-    public void runGame(Card topCard, int currentPlayerIndex) {
+    public void runGame(Card topCard) {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
             window.repaint();
 
-            Player currentPlayer = players.get(currentPlayerIndex);
-            printGameInstructions(currentPlayer, currentPlayerIndex, topCard);
+            Player user = players.get(0);
+            printGameInstructions(user, topCard);
 
-            String input = scanner.nextLine();
+            topCard = userTurn(user, topCard);
 
-            // If they choose to draw a card, draw a card and add it to their hand
-            if (input.equalsIgnoreCase("d")) {
-                drawCard(currentPlayer);
-            }
-            // Otherwise check that their choice of card is valid/special card
-            else {
-                int index = getValidCardIndex(input, currentPlayer.getHand());
-                // Check that the input is a valid number
-                if (index == -1) {
-                    System.out.println("Invalid input. Skipping turn.");
-                }
-                else {
-                    topCard = playCard(currentPlayer, index, topCard);
-                }
-            }
+            Player computer = players.get(1);
+            topCard = computerTurn(computer, topCard);
 
             // If someone's hand is empty, then they won
-            if (currentPlayer.getHand().isEmpty()) {
-                isWon(currentPlayer);
+            if (user.getHand().isEmpty()) {
+                isWon(user);
                 scanner.close();
                 return;
             }
-
-            currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+            else if (computer.getHand().isEmpty()) {
+                isWon(computer);
+                scanner.close();
+                return;
+            }
+            else if (deck.isEmpty()) {
+                isWon("TIE");
+                scanner.close();
+                return;
+            }
         }
+    }
+
+    public Card computerTurn(Player computer, Card topCard) {
+        ArrayList<Card> hand = computer.getHand();
+        for (int i = 0, n = hand.size(); i < n; i++) {
+            if (isValidMove(hand.get(i), topCard)) {
+                topCard = playCard(computer, i, topCard);
+                return topCard;
+            }
+        }
+
+        drawCard(computer);
+        return topCard;
+    }
+
+    public Card userTurn(Player user, Card topCard) {
+        Scanner scanner = new Scanner(System.in);
+
+        String input = scanner.nextLine();
+
+        // If they choose to draw a card, draw a card and add it to their hand
+        if (input.equalsIgnoreCase("d")) {
+            drawCard(user);
+        }
+        // Otherwise check that their choice of card is valid/special card
+        else {
+            int index = getValidCardIndex(input, user.getHand());
+            // Check that the input is a valid number
+            if (index == -1) {
+                System.out.println("Invalid input. Skipping turn.");
+            }
+            else {
+                topCard = playCard(user, index, topCard);
+            }
+        }
+        return topCard;
     }
 
     public void isWon(Player currentPlayer) {
         this.state = WON;
         winner = currentPlayer.getName();
         System.out.println(winner + " wins!");
+    }
+
+    public void isWon(String tie) {
+        this.state = WON;
+        System.out.println("Deck is empty. It's a tie.");
     }
 
     public int getValidCardIndex(String input, ArrayList<Card> hand) {
@@ -202,7 +237,7 @@ public class Game {
         String[] colors = {"Red", "Green", "Blue", "Yellow"};
         int[] indices = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-        String[] playerNames = {"User 1", "User 2"};
+        String[] playerNames = {"User", "Computer"};
         Game unoGame = new Game(playerNames, types, colors, indices);
         unoGame.initializeGame();
     }
