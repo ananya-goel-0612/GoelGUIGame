@@ -16,6 +16,7 @@ public class GameViewer extends JFrame {
     private Image computerWon;
     private Image tie;
     private Image cardBack;
+    private Image table;
 
     public GameViewer(Game game) {
         this.game = game;
@@ -25,6 +26,7 @@ public class GameViewer extends JFrame {
         computerWon = new ImageIcon("Resources/computerWon.png").getImage();
         tie = new ImageIcon("Resources/tie.png").getImage();
         cardBack = new ImageIcon("Resources/back.png").getImage();
+        table = new ImageIcon("Resources/table.png").getImage();
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("Ananya's Simplified Uno!");
@@ -54,6 +56,7 @@ public class GameViewer extends JFrame {
                 }
                 break;
             case Game.PLAYING:
+                g.drawImage(table, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, this);
                 int yPosition = WINDOW_HEIGHT / 2 - Card.CARD_HEIGHT / 2;
                 int xPosition = WINDOW_WIDTH / 2 - 2 * Card.CARD_WIDTH;
                 g.drawImage(cardBack, xPosition, yPosition, Card.CARD_WIDTH, Card.CARD_HEIGHT, this);
@@ -67,7 +70,7 @@ public class GameViewer extends JFrame {
                     int spacing = BUFFER_X + i * ((WINDOW_WIDTH - 2 * BUFFER_X) / userHand.size());
                     userHand.get(i).draw(g, spacing, WINDOW_HEIGHT - BUFFER_Y - Card.CARD_HEIGHT);
 
-                    g.setColor(Color.BLACK);
+                    g.setColor(Color.WHITE);
                     g.drawString(Integer.toString(i), spacing + Card.CARD_WIDTH / 2,
                             WINDOW_HEIGHT - BUFFER_Y + LABEL_OFFSET);
                 }
