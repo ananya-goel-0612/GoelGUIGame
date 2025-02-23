@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
-    private Deck deck;
-    private ArrayList<Player> players;
+    private final Deck deck;
+    private final ArrayList<Player> players;
     private int state;
 
     private String winner;
@@ -14,7 +14,7 @@ public class Game {
 
     private final int NUM_CARDS = 5;
 
-    private GameViewer window;
+    private final GameViewer window;
 
     private Card topCard;
 
@@ -180,7 +180,7 @@ public class Game {
     }
 
     public int getValidCardIndex(String input, ArrayList<Card> hand) {
-        // Found this documentation for converting from strings to ints
+        // Found this documentation for converting from strings to integers
         // On Stack Overflow
         // https://stackoverflow.com/questions/5585779/how-do-i-convert-a-string-to-an-int-in-java
         try {
@@ -224,10 +224,6 @@ public class Game {
 
     public int getState() {
         return state;
-    }
-
-    public void setState(int state) {
-        this.state = state;
     }
 
     public String getWinner() {

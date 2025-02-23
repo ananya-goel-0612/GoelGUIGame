@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Deck {
-    private ArrayList<Card> cards;
+    private final ArrayList<Card> cards;
     private int cardsLeft;
 
     public Deck(String[] ranks, String[] suits, int[] values, GameViewer window) {
@@ -20,11 +20,6 @@ public class Deck {
 
     public boolean isEmpty() {
         return cardsLeft == 0;
-    }
-
-
-    public int getCardsLeft() {
-        return cardsLeft;
     }
 
     public Card deal() {

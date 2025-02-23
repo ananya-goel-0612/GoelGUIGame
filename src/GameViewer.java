@@ -10,12 +10,12 @@ public class GameViewer extends JFrame {
             LABEL_OFFSET = (int)(WINDOW_WIDTH * 0.05); // Credit to Isha Gupta for the values
     private final Game game;
 
-    private Image welcome;
-    private Image userWon;
-    private Image computerWon;
-    private Image tie;
-    private Image cardBack;
-    private Image table;
+    private final Image welcome;
+    private final Image userWon;
+    private final Image computerWon;
+    private final Image tie;
+    private final Image cardBack;
+    private final Image table;
 
     // Initializes the front-end
     public GameViewer(Game game) {
