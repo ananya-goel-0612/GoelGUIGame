@@ -98,15 +98,18 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         window.repaint();
 
+        Player user = players.get(0);
+        Player computer = players.get(1);
+
         while (true) {
-            Player user = players.get(0);
             printGameInstructions(user);
 
             topCard = userTurn(user);
+            checkUno(user);
             window.repaint();
 
-            Player computer = players.get(1);
             topCard = computerTurn(computer);
+            checkUno(computer);
             window.repaint();
 
             // If someone's hand is empty, then they won
@@ -128,6 +131,12 @@ public class Game {
                 window.repaint();
                 return;
             }
+        }
+    }
+
+    public void checkUno(Player player) {
+        if (player.getHand().size() == 1) {
+            System.out.println(player.getName() + " says UNO!");
         }
     }
 
