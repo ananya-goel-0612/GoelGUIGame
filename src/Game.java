@@ -63,7 +63,7 @@ public class Game {
         // Print out the drawn card and add it to the player's hand
         // As long as the drawn card is not null
         if (drawnCard != null) {
-            System.out.println("You drew: " + drawnCard);
+            System.out.println(currentPlayer.getName() + " drew: " + drawnCard);
             currentPlayer.addCard(drawnCard);
         }
         // Otherwise print out a message saying that the deck is empty
