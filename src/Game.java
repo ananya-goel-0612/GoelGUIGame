@@ -18,12 +18,12 @@ public class Game {
 
     private Card topCard;
 
-    public Game(String[] playerNames, String[] types, String[] colors, int[] indices) {
+    public Game(String[] playerNames, String[] types, String[] colors) {
         this.state = START;
         this.window = new GameViewer(this);
 
         // Initialize deck
-        deck = new Deck(types, colors, indices, window);
+        deck = new Deck(types, colors, window);
         // Get the players
         players = new ArrayList<Player>();
         for (String name : playerNames) {
@@ -253,10 +253,9 @@ public class Game {
         // All the card values for uno
         String[] types = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         String[] colors = {"Red", "Green", "Blue", "Yellow"};
-        int[] indices = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
         String[] playerNames = {"User", "Computer"};
-        Game unoGame = new Game(playerNames, types, colors, indices);
+        Game unoGame = new Game(playerNames, types, colors);
         unoGame.initializeGame();
     }
 }

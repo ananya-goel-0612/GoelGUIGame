@@ -7,17 +7,15 @@ public class Card {
     private final String type;
     // Suit = color
     private final String color;
-    // Value = index of card
-    private final int index;
+
     private final Image image;
     private final GameViewer window;
     public static final int CARD_WIDTH = 100;
     public static final int CARD_HEIGHT = 171;
 
-    public Card(String type, String color, int index, GameViewer window) {
+    public Card(String type, String color, GameViewer window) {
         this.type = type;
         this.color = color;
-        this.index = index;
         this.window = window;
         image = new ImageIcon("Resources/Cards/" + color + type + ".png").getImage();
     }
