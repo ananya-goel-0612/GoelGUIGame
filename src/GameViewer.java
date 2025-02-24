@@ -84,7 +84,7 @@ public class GameViewer extends JFrame {
                             WINDOW_HEIGHT - BUFFER_Y + LABEL_OFFSET);
                 }
 
-                // Draws all the computer's cards face down
+                // Draws all the computer's cards face down so that the user can't see them
                 for (int i = 0; i < compHand.size(); i++) {
                     int spacing = BUFFER_X + i * ((WINDOW_WIDTH - 2 * BUFFER_X) / compHand.size());
                     g.drawImage(cardBack, spacing, BUFFER_Y, Card.CARD_WIDTH, Card.CARD_HEIGHT, this);
