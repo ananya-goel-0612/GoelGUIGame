@@ -10,6 +10,7 @@ public class Card {
 
     private final Image image;
     private final GameViewer window;
+
     public static final int CARD_WIDTH = 100;
     public static final int CARD_HEIGHT = 171;
 

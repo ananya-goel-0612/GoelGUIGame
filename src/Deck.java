@@ -4,13 +4,13 @@ public class Deck {
     private final ArrayList<Card> cards;
     private int cardsLeft;
 
-    public Deck(String[] ranks, String[] suits, GameViewer window) {
+    public Deck(String[] types, String[] colors, GameViewer window) {
         // Initialize cards
         this.cards = new ArrayList<Card>();
-        for (String suit : suits) {
-            for (int i = 0; i < ranks.length; i++) {
+        for (String color : colors) {
+            for (int i = 0; i < types.length; i++) {
                 // Add a new card with different ranks and values to each suit
-                cards.add(new Card(ranks[i], suit, window));
+                cards.add(new Card(types[i], color, window));
             }
         }
         this.cardsLeft = cards.size();
