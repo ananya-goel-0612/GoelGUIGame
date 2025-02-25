@@ -48,13 +48,13 @@ public class GameViewer extends JFrame {
             case Game.WON:
                 // Displays which player won once the game state has been set to WON
                 if (game.getWinner() == null) {
-                    g.drawImage(tie, 0, 0, this);
+                    g.drawImage(tie, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, this);
                 }
                 else if (game.getWinner().equals("User")) {
-                    g.drawImage(userWon, 0, 0, this);
+                    g.drawImage(userWon, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,this);
                 }
                 else if (game.getWinner().equals("Computer")) {
-                    g.drawImage(computerWon, 0, 0, this);
+                    g.drawImage(computerWon, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, this);
                 }
                 break;
             case Game.PLAYING:

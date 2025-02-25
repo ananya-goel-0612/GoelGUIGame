@@ -12,7 +12,7 @@ public class Game {
     public static final int PLAYING = 1;
     public static final int WON = 2;
 
-    private final int NUM_CARDS = 5;
+    private static final int NUM_CARDS = 5;
 
     private final GameViewer window;
 
