@@ -4,6 +4,7 @@ public class Deck {
     private final ArrayList<Card> cards;
     private int cardsLeft;
 
+    // Initializes the deck of cards
     public Deck(String[] types, String[] colors, GameViewer window) {
         // Initialize cards
         this.cards = new ArrayList<Card>();
@@ -22,6 +23,7 @@ public class Deck {
         return cardsLeft == 0;
     }
 
+    // Deals a card from the deck
     public Card deal() {
         // Returns null if there's no cards left
         if (isEmpty()) {
@@ -30,14 +32,12 @@ public class Deck {
         return cards.get(--cardsLeft);
     }
 
+    // Shuffles the deck of cards
     public void shuffle() {
-        // Reset cardsLeft to the total amount of cards
-        cardsLeft = cards.size();
-        // For i = last index of the deck down to 0
         for (int i = cards.size() - 1; i > 0; i--) {
-            // Generate a random integer r (using Math.random) between 0 and i, inclusive
+            // Generates a random integer r (using Math.random) between 0 and i, inclusive
             int r = (int) (Math.random() * (i + 1));
-            // Exchange cards[i] and cards[r]
+            // Exchanges cards[i] and cards[r]
             Card temp = cards.get(i);
             cards.set(i, cards.get(r));
             cards.set(r, temp);

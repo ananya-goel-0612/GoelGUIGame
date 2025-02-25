@@ -47,15 +47,16 @@ public class GameViewer extends JFrame {
                 break;
             case Game.WON:
                 // Displays which player won once the game state has been set to WON
-                if (game.getWinner() == null) {
-                    g.drawImage(tie, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, this);
-                }
-                else if (game.getWinner().equals("User")) {
+                if (game.getWinner().equals("User")) {
                     g.drawImage(userWon, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,this);
                 }
                 else if (game.getWinner().equals("Computer")) {
                     g.drawImage(computerWon, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, this);
                 }
+                break;
+            case Game.TIE:
+                // Displays the image that says the game was a tie once the game state is set to TIE
+                g.drawImage(tie, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, this);
                 break;
             case Game.PLAYING:
                 // Draws the background first so that all the cards get drawn on top

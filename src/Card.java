@@ -14,13 +14,13 @@ public class Card {
     public static final int CARD_WIDTH = 100;
     public static final int CARD_HEIGHT = 171;
 
+    // Initializes the card
     public Card(String type, String color, GameViewer window) {
         this.type = type;
         this.color = color;
         this.window = window;
         image = new ImageIcon("Resources/Cards/" + color + type + ".png").getImage();
     }
-
 
     public String getType() {
         return type;
@@ -36,6 +36,7 @@ public class Card {
         return color + " " + type;
     }
 
+    // Draws each card at the passed-in position in the window
     public void draw(Graphics g, int xTop, int yTop) {
         g.drawImage(this.image, xTop,yTop, CARD_WIDTH,CARD_HEIGHT, window);
     }

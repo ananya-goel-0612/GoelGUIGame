@@ -11,6 +11,7 @@ public class Game {
     public static final int START = 0;
     public static final int PLAYING = 1;
     public static final int WON = 2;
+    public static final int TIE = 3;
 
     private static final int NUM_CARDS = 5;
 
@@ -18,8 +19,10 @@ public class Game {
 
     private Card topCard;
 
+    // Initializes the game
     public Game(String[] playerNames, String[] types, String[] colors) {
         this.state = START;
+        // Window is initialized first and the welcome image is drawn
         this.window = new GameViewer(this);
 
         // Initialize deck
@@ -46,6 +49,7 @@ public class Game {
         System.out.println("Are you ready to begin? (answer y or n)");
     }
 
+    // Prints out the instructions for each round
     public void printGameInstructions(Player currentPlayer) {
         // Print out whose turn it is
         System.out.println(currentPlayer.getName() + "'s turn.");
@@ -57,6 +61,7 @@ public class Game {
         System.out.println("Choose a card to play or draw a card (enter index or 'd'): ");
     }
 
+    // If the player needs to draw a card, a card is drawn and added to their hand
     public void drawCard(Player currentPlayer) {
         // Draw a card
         Card drawnCard = deck.deal();
@@ -72,6 +77,7 @@ public class Game {
         }
     }
 
+    // Proceeds if the user is ready to start the game, after they've read the instructions
     public boolean startGame() {
         printStartingInstructions();
         // Create scanner to get user input for their choice of cards
@@ -81,6 +87,7 @@ public class Game {
         return answer.equalsIgnoreCase("y");
     }
 
+    // Runs the game if the user decided to proceed
     public void initializeGame() {
         if (!startGame()) {
             return;
@@ -94,6 +101,7 @@ public class Game {
         runGame();
     }
 
+    // Method where the game is actually run
     public void runGame() {
         Scanner scanner = new Scanner(System.in);
         window.repaint();
@@ -104,6 +112,7 @@ public class Game {
         while (true) {
             printGameInstructions(user);
 
+            // Checks to make sure the deck isn't null or empty before proceeding
             if (deck.isEmpty()) {
                 isWon("TIE");
                 scanner.close();
@@ -111,15 +120,19 @@ public class Game {
                 return;
             }
 
+            // The user takes their turn and the top card is set to whatever card they played
             topCard = userTurn(user);
+            // If the user only has one card left, UNO is printed out
             checkUno(user);
             window.repaint();
 
+            // The computer takes its turn and the top card is set to the card it plays
             topCard = computerTurn(computer);
+            // Prints UNO if the computer has one card left
             checkUno(computer);
             window.repaint();
 
-            // If someone's hand is empty, then they won
+            // If a player's hand is empty, then they won
             if (user.getHand().isEmpty()) {
                 isWon(user);
                 scanner.close();
@@ -135,14 +148,17 @@ public class Game {
         }
     }
 
+    // Prints out if the player has an UNO (one card left)
     public void checkUno(Player player) {
         if (player.getHand().size() == 1) {
             System.out.println(player.getName() + " says UNO!");
         }
     }
 
+    // Method for the computer to take its turn
     public Card computerTurn(Player computer) {
         ArrayList<Card> hand = computer.getHand();
+        // If any card in its hand is a match to the top card, that card is played
         for (int i = 0, n = hand.size(); i < n; i++) {
             if (isValidMove(hand.get(i))) {
                 topCard = playCard(computer, i);
@@ -150,10 +166,12 @@ public class Game {
             }
         }
 
+        // If no match was found, the computer draws a card
         drawCard(computer);
         return topCard;
     }
 
+    // Method for the user to take their turn
     public Card userTurn(Player user) {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
@@ -164,29 +182,35 @@ public class Game {
         }
         // Otherwise check that their choice of card is valid/special card
         else {
-            int index = getValidCardIndex(input, user.getHand());
-            // Check that the input is a valid number
-            if (index == -1) {
-                System.out.println("Invalid input. Skipping turn.");
+            int index;
+            // Makes sure the user inputs a valid input
+            do {
+                index = getValidCardIndex(input, user.getHand());
             }
-            else {
-                topCard = playCard(user, index);
-            }
+            while (index == -1);
+
+            // Once valid, the top card is set to the user's choice
+            topCard = playCard(user, index);
         }
         return topCard;
     }
 
+    // If a player won, prints out the winner and sets the state of the game equal to WON
     public void isWon(Player currentPlayer) {
         this.state = WON;
         winner = currentPlayer.getName();
         System.out.println(winner + " wins!");
     }
 
+    // If the deck was empty, the game was a tie and that is printed out
+    // The state of the game is set to TIE
     public void isWon(String tie) {
-        this.state = WON;
+        this.state = TIE;
         System.out.println("Deck is empty. It's a tie.");
     }
 
+    // Makes sure the user inputs a valid index for their card of choice
+    // If it's not valid, it will return -1
     public int getValidCardIndex(String input, ArrayList<Card> hand) {
         // Found this documentation for converting from strings to integers
         // On Stack Overflow
@@ -198,6 +222,7 @@ public class Game {
             }
             else {
                 System.out.println("Index out of bounds. Valid range: 0 to " + (hand.size() - 1));
+                return -1;
             }
         }
         catch (NumberFormatException e) {
