@@ -275,12 +275,13 @@ public class Game {
 
     // Main function
     public static void main(String[] args) {
-        // All the card values for uno
+        // All the card values for UNO
         String[] types = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         String[] colors = {"Red", "Green", "Blue", "Yellow"};
 
         String[] playerNames = {"User", "Computer"};
         Game unoGame = new Game(playerNames, types, colors);
+        // Starts the game by printing out the instructions
         unoGame.initializeGame();
     }
 }
